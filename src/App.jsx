@@ -35,6 +35,9 @@ export default function App() {
             }
           />
 
+          {/* Redirect root to login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
           {/* Redirect all unknown routes to login */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
