@@ -11,8 +11,8 @@ API.interceptors.request.use((req) => {
 });
 
 // user APIs
-export const loginUser = (data) => API.post("/users/login", data);
-export const register = (data) => API.post("/users/register", data);
+export const loginUser = (data) => API.post("/login", data);
+export const register = (data) => API.post("/register", data);
 
 // task APIs
 export const getTasks = () => API.get("/tasks");
