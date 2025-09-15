@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // change this to your backend API base URL
-const API = axios.create({ baseURL: "https://mern-todo-backend-1emj.onrender.com/" });
+const API = axios.create({ baseURL: "https://mern-todo-backend-1emj.onrender.com/api/users" });
 
 // attach JWT token if exists
 API.interceptors.request.use((req) => {
