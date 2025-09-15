@@ -1,21 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    const token = localStorage.getItem("token");
-    return token ? { token } : null;
-  });
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const login = (data) => {
-    localStorage.setItem("token", data.token);
-    setUser(data);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setUser({ token });
+  }, []);
+
+  const login = (token) => {
+    localStorage.setItem("token", token);
+    setUser({ token });
+    navigate("/dashboard");
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
+    navigate("/login");
   };
 
   return (
